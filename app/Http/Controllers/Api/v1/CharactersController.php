@@ -17,7 +17,7 @@ class CharactersController extends Controller
   public function index()
   {
       //
-      return $this->_response(['characters' => []], 200);
+      return response()->build(['characters' => []], 200);
   }
 
   /**
@@ -29,7 +29,7 @@ class CharactersController extends Controller
   public function store(Request $request)
   {
       //
-      return $this->_response(['character' => []], 201);
+      return response()->build(['character' => []], 201);
   }
 
   /**
@@ -41,7 +41,7 @@ class CharactersController extends Controller
   public function show($id)
   {
       //
-      return $this->_response(['character' => []], 200);
+      return response()->build(['character' => []], 200);
   }
 
   /**
@@ -54,7 +54,7 @@ class CharactersController extends Controller
   public function update(Request $request, $id)
   {
       //
-      return $this->_response(['character' => []], 201);
+      return response()->build(['character' => []], 201);
   }
 
   /**
@@ -66,6 +66,6 @@ class CharactersController extends Controller
   public function destroy($id)
   {
       //
-      return $this->_response(['character' => []], 204);
+      return response()->build(['character' => []], 204);
   }
 }

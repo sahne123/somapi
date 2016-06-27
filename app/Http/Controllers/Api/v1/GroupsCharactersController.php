@@ -18,7 +18,7 @@ class GroupsCharactersController extends Controller
   public function index($group)
   {
       //
-      return $this->_response(['characters' => []], 200);
+      return response()->build(['characters' => []], 200);
   }
 
   /**
@@ -31,7 +31,7 @@ class GroupsCharactersController extends Controller
   public function store($group, Request $request)
   {
       //
-      return $this->_response(['character' => []], 201);
+      return response()->build(['character' => []], 201);
   }
 
   /**
@@ -44,7 +44,7 @@ class GroupsCharactersController extends Controller
   public function show($group, $id)
   {
       //
-      return $this->_response(['character' => []], 200);
+      return response()->build(['character' => []], 200);
   }
 
   /**
@@ -58,7 +58,7 @@ class GroupsCharactersController extends Controller
   public function update(Request $request, $group, $id)
   {
       //
-      return $this->_response(['character' => []], 201);
+      return response()->build(['character' => []], 201);
   }
 
   /**
@@ -71,6 +71,6 @@ class GroupsCharactersController extends Controller
   public function destroy($group, $id)
   {
       //
-      return $this->_response(['character' => []], 204);
+      return response()->build(['character' => []], 204);
   }
 }

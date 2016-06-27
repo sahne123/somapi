@@ -17,7 +17,7 @@ class GroupsController extends Controller
   public function index()
   {
       //
-      return $this->_response(['groups' => []], 200);
+      return response()->build(['groups' => []], 200);
   }
 
   /**
@@ -29,7 +29,7 @@ class GroupsController extends Controller
   public function store(Request $request)
   {
       //
-      return $this->_response(['group' => []], 201);
+      return response()->build(['group' => []], 201);
   }
 
   /**
@@ -41,7 +41,7 @@ class GroupsController extends Controller
   public function show($id)
   {
       //
-      return $this->_response(['group' => []], 200);
+      return response()->build(['group' => []], 200);
   }
 
   /**
@@ -54,7 +54,7 @@ class GroupsController extends Controller
   public function update(Request $request, $id)
   {
       //
-      return $this->_response(['group' => []], 201);
+      return response()->build(['group' => []], 201);
   }
 
   /**
@@ -66,6 +66,6 @@ class GroupsController extends Controller
   public function destroy($id)
   {
       //
-      return $this->_response(['group' => []], 204);
+      return response()->build(['group' => []], 204);
   }
 }
