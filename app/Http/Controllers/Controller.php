@@ -8,7 +8,21 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
+use Illuminate\Http\Response;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+
+    protected function _response($data, $status, $error=false)
+    {
+      $data = array_merge($data, [
+        'status_code' => (int)$status,
+        'error' => $error,
+      ]);
+
+      return response()
+              ->json($data, (int)$status)
+              ->header('Content-Type', 'application/json');
+    }
 }

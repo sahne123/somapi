@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'api/v1'], function () {
+	Route::resource('groups',            'Api\v1\GroupsController',           ['except' => ['create', 'edit']]);
+	Route::resource('characters',        'Api\v1\CharactersController',       ['except' => ['create', 'edit']]);
+	Route::resource('groups.characters', 'Api\v1\GroupsCharactersController', ['except' => ['create', 'edit']]);
+});
