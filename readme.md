@@ -1,7 +1,7 @@
 Simple REST-API to organize **Shadows of Brimstone** Characters and Parties. Build with [Laravel](https://github.com/laravel/laravel).
 
 ## Usage
-Every request needs the paramater `api_token' with an valid token (see user table). If a resource could not be found for updating or deleting the response will be HTTP-Status 204.
+Every request needs the paramater `api_token` with an valid token (see users table). The Response is JSON. If a resource could not be found for updating or deleting the response will be HTTP-Status 204 (no text).
 
 ### Error-Responses
 
