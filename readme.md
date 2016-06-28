@@ -42,8 +42,6 @@ none
 ```
 
 #### `GET` api/v1/groups/`id`
-Get group by id.
-
 ##### Paramaters
 none
 ##### Success-Response
@@ -59,8 +57,6 @@ none
 ```
 
 #### `POST` api/v1/groups
-Create group.
-
 ##### Paramaters
 Parameter | Description
 --------- | -----------
@@ -78,8 +74,6 @@ name      | Name of the Group
 ```
 
 #### `PUT` api/v1/groups/`id`
-Update group.
-
 ##### Paramaters
 Parameter | Description
 --------- | -----------
@@ -98,8 +92,6 @@ name      | Name of the Group
 ```
 
 #### `DELETE` api/v1/groups/`id`
-Delete group.
-
 ##### Paramaters
 none
 ##### Success-Response
