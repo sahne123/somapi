@@ -48,7 +48,7 @@ abstract class ResourceController extends Controller
       {
         return response()->build([$this->_singular => $model], 201);
       }
-      return response()->build(null, 422, 'Error saving Resource.');
+      return response()->build(null, 422, 'Error saving '.$this->_singular.'.');
     }
     return response()->build(null, 422, $this->_validatorErrors);
   }
@@ -65,7 +65,7 @@ abstract class ResourceController extends Controller
     {
       return response()->build([$this->_singular => $model], 200);
     }
-    return response()->build(null, 404, 'Resource not found.');
+    return response()->build(null, 404, $this->_singular.' not found.');
   }
 
   /**
@@ -87,11 +87,11 @@ abstract class ResourceController extends Controller
           {
             return response()->build([$this->_singular => $model], 200);
           }
-          return response()->build(null, 422, 'Error saving Resource.');
+          return response()->build(null, 422, 'Error saving '.$this->_singular.'.');
         }
         return response()->build(null, 422, $this->_validatorErrors);
       }
-      return response()->build(null, 204);
+      return response()->build(null, 422, $this->_singular.' not found.');
     }
     return response()->build(null, 400, 'Id mismatch.');
   }
@@ -107,9 +107,9 @@ abstract class ResourceController extends Controller
     if($model = $this->_class->find($id))
     {
       $model->delete();
-      return response()->build([$this->_singular => $model], 202);
+      return response()->build([$this->_singular => $model], 200);
     }
-    return response()->build(null, 204);
+    return response()->build(null, 422, $this->_singular.' not found.');
   }
 
 }

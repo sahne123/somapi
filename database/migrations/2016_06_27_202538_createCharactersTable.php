@@ -42,6 +42,7 @@ class CreateCharactersTable extends Migration
         $table->increments('id');
         $table->integer('group_id')->unsigned();
         $table->integer('character_id')->unsigned();
+        $table->unique(['group_id','character_id']);
         $table->foreign('group_id')->references('id')->on('groups');
         $table->foreign('character_id')->references('id')->on('characters');
       });
