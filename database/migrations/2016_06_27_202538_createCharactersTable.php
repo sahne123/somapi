@@ -17,6 +17,7 @@ class CreateCharactersTable extends Migration
         $table->increments('id');
         $table->string('name');
         $table->string('keywords');
+        $table->smallInteger('level')->unsigned()->default(1);
         $table->smallInteger('initiative')->unsigned()->default(0);
         $table->smallInteger('agility')->unsigned()->default(0);
         $table->smallInteger('cunning')->unsigned()->default(0);
@@ -35,7 +36,7 @@ class CreateCharactersTable extends Migration
         $table->timestamps();
         $table->softDeletes();
       });
-      
+
       Schema::create('character_group', function(Blueprint $table)
       {
         $table->increments('id');
@@ -44,7 +45,7 @@ class CreateCharactersTable extends Migration
         $table->foreign('group_id')->references('id')->on('groups');
         $table->foreign('character_id')->references('id')->on('characters');
       });
-      
+
     }
 
     /**
