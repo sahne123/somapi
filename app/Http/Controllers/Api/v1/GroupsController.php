@@ -85,7 +85,7 @@ class GroupsController extends Controller
       }
       return response()->build(null, 204);
     }
-    return response()->build(null, 400, 'Id missmatch.');
+    return response()->build(null, 400, 'Id mismatch.');
   }
 
   /**

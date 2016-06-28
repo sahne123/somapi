@@ -48,6 +48,9 @@ class Handler extends ExceptionHandler
         if($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
           return response()->build(null, 400, 'Invalid url.');
 
+        if($e instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException)
+          return response()->build(null, 400, 'HTTP-Verb not allowed.');
+
         return parent::render($request, $e);
     }
 }
