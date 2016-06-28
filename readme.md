@@ -1,4 +1,4 @@
-Simple REST-API to organize **Shadows of Brimstone** Characters and Parties. Build with [Laravel](https://github.com/laravel/laravel).
+Simple REST-API to organize **Shadows of Brimstone** Characters and Groups. Build with [Laravel](https://github.com/laravel/laravel).
 
 ## Usage
 Every request needs the paramater `api_token` with an valid token (see users table). The Response is JSON.
@@ -113,6 +113,68 @@ none
         "id": 1,
         "name": "Die rechte und die linke Hand des Teufels"
     },
+    "status_code": 200,
+    "error": false
+}
+```
+
+#### `GET` api/v1/groups/`id`/characters
+##### Paramaters
+none
+##### Success-Response
+```
+{
+    "characters": [
+        {
+            "id": 1,
+            "name": "Bud Spencer",
+            "keywords": "actor, filmmaker, professional swimmer",
+            "level": 99,
+            "initiative": 4,
+            "agility": 4,
+            "cunning": 2,
+            "spirit": 3,
+            "strength": 10,
+            "lore": 1,
+            "luck": 8,
+            "maxgrit": 2,
+            "combat": 4,
+            "range": 5,
+            "melee": 3,
+            "health": 16,
+            "defense": 3,
+            "sanity": 8,
+            "willpower": 4,
+            "pivot": {
+                "group_id": 1,
+                "character_id": 1
+            }
+        }
+    ],
+    "status_code": 200,
+    "error": false
+}
+```
+
+#### `POST` api/v1/groups/`id`/characters
+##### Paramaters
+Parameter | Description
+--------- | -----------
+id        | Id of the Character
+##### Success-Response
+```
+{
+    "status_code": 201,
+    "error": false
+}
+```
+
+#### `DELETE` api/v1/groups/`group_id`/characters/`character_id`
+##### Paramaters
+none
+##### Success-Response
+```
+{
     "status_code": 200,
     "error": false
 }
