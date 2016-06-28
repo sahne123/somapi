@@ -3,69 +3,30 @@
 namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-use App\Http\Requests;
-use \App\Http\Controllers\Controller;
-
-class CharactersController extends Controller
+class CharactersController extends ResourceController
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-      //
-      return response()->build(['characters' => []], 200);
-  }
+  protected $_resource = 'character';
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
-  {
-      //
-      return response()->build(['character' => []], 201);
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-      //
-      return response()->build(['character' => []], 200);
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
-  {
-      //
-      return response()->build(['character' => []], 201);
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-      //
-      return response()->build(['character' => []], 204);
-  }
+  protected $_validatorFields = [
+    'name'       => 'required',
+    'keywords'   => 'required',
+    'level'      => 'required|integer|min:1',
+    'initiative' => 'required|integer|min:0',
+    'agility'    => 'required|integer|min:0',
+    'cunning'    => 'required|integer|min:0',
+    'spirit'     => 'required|integer|min:0',
+    'strength'   => 'required|integer|min:0',
+    'lore'       => 'required|integer|min:0',
+    'luck'       => 'required|integer|min:0',
+    'maxgrit'    => 'required|integer|min:0',
+    'combat'     => 'required|integer|min:0',
+    'range'      => 'required|integer|min:0',
+    'melee'      => 'required|integer|min:0',
+    'health'     => 'required|integer|min:0',
+    'defense'    => 'required|integer|min:0',
+    'sanity'     => 'required|integer|min:0',
+    'willpower'  => 'required|integer|min:0',
+  ];
 }

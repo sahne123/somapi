@@ -22,7 +22,7 @@ class Controller extends BaseController
     {
       if($isUpdate)
       {
-        $this->_validatorFields['id'] = 'required|numeric';
+        $this->_validatorFields['id'] = 'required|integer|min:1';
       }
 
       $validator = Validator::make($request->all(), $this->_validatorFields);
