@@ -1,7 +1,7 @@
 Simple REST-API to organize **Shadows of Brimstone** Characters and Parties. Build with [Laravel](https://github.com/laravel/laravel).
 
 ## Usage
-Every request needs the paramater `api_token` with an valid token (see users table). The Response is JSON. If a Resource could not be found for updating or deleting the response will be HTTP-Status 204 (no text).
+Every request needs the paramater `api_token` with an valid token (see users table). The Response is JSON.
 
 ### Working with Resources
 For each Resource there are 5 Methods.
@@ -17,6 +17,18 @@ DELETE | /api/v1/`resource`/`id` | Delete Resource | none | 200
 Implemented Resources:
 - Groups
 - Characters
+
+### Working with Resource-Relations
+HTTP-Verb | Url | Description | Params | Success `status_code`
+--------- | --- | ----------- | ------ | ---------------------
+GET | /api/v1/`resource1`/`id`/`resource2` | Get all Resources2 from the Resource1 with the given id | none | 200
+POST | /api/v1/`resource1`/`id`/`resource2` | Assign a existing Resources2 to the Resource1 with the given id| id of Resource2 | 201
+DELETE | /api/v1/`resource1`/`id1`/`resource2`/`id2` | Detach Resource2 with the id2 from Resource1 with the given id1 | none | 200
+
+Implemented Resources:
+- Groups/Characters
+
+Note: There is always a leading Resource `groups/1/chracters` will work, `characters/5/groups` will not work.
 
 ### Samples
 
