@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
 	Route::resource('groups',            'Api\v1\GroupsController',           ['except' => ['create', 'edit']]);

@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use \App\Http\Controllers;
 use \App\Http\Controllers\Controller;
 
+use \App\Group;
+
 class GroupsController extends Controller
 {
+  protected $_validatorFields = [
+    'name' => 'required',
+  ];
+
   /**
    * Display a listing of the resource.
    *
@@ -16,8 +23,7 @@ class GroupsController extends Controller
    */
   public function index()
   {
-      //
-      return response()->build(['groups' => []], 200);
+    return response()->build(['groups' => Group::all()], 200);
   }
 
   /**
@@ -28,8 +34,15 @@ class GroupsController extends Controller
    */
   public function store(Request $request)
   {
-      //
-      return response()->build(['group' => []], 201);
+    if($this->_validate($request))
+    {
+      if($group = Group::create($request->all()))
+      {
+        return response()->build(['group' => $group], 201);
+      }
+      return response()->build(null, 422, 'Error saving Group.');
+    }
+    return response()->build(null, 422, $this->_validatorErrors);
   }
 
   /**
@@ -40,8 +53,11 @@ class GroupsController extends Controller
    */
   public function show($id)
   {
-      //
-      return response()->build(['group' => []], 200);
+    if($group = Group::find($id))
+    {
+      return response()->build(['group' => $group], 200);
+    }
+    return response()->build(null, 404, 'Group not found.');
   }
 
   /**
@@ -53,8 +69,23 @@ class GroupsController extends Controller
    */
   public function update(Request $request, $id)
   {
-      //
-      return response()->build(['group' => []], 201);
+    if( $request->input('id') == $id)
+    {
+      if($group = Group::find($id))
+      {
+        if($this->_validate($request, true))
+        {
+          if($group->update($request->all()))
+          {
+            return response()->build(['group' => $group], 200);
+          }
+          return response()->build(null, 422, 'Error saving Group.');
+        }
+        return response()->build(null, 422, $this->_validatorErrors);
+      }
+      return response()->build(null, 204);
+    }
+    return response()->build(null, 400, 'Id missmatch.');
   }
 
   /**
@@ -65,7 +96,13 @@ class GroupsController extends Controller
    */
   public function destroy($id)
   {
-      //
-      return response()->build(['group' => []], 204);
+    if($group = Group::find($id))
+    {
+      $group->delete();
+      return response()->build(['group' => $group], 202);
+    }
+    return response()->build(null, 204);
   }
+
+
 }
