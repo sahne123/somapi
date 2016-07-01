@@ -16,4 +16,10 @@ class Group extends Model
     {
       return $this->belongsToMany('App\Character');
     }
+
+    public function delete()
+    {
+      $this->characters()->detach($this->characters->pluck('id'));
+      parent::delete();
+    }
 }

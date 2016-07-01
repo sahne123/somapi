@@ -15,4 +15,10 @@ class Character extends Model
     {
       return $this->belongsToMany('App\Group');
     }
+
+    public function delete()
+    {
+      $this->groups()->detach($this->groups->pluck('id'));
+      parent::delete();
+    }
 }
