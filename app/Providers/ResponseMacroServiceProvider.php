@@ -26,6 +26,7 @@ class ResponseMacroServiceProvider extends ServiceProvider {
 
           return response()
                   ->json($data, (int)$status)
+                  ->header('Access-Control-Allow-Origin', '*')
                   ->header('Content-Type', 'application/json');
         });
     }
